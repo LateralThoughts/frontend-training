@@ -38,7 +38,7 @@ describe("custom matchers - ", function() {
 
     // DISABLED AREA - just for your info ;)
     // just stick a x in front of a suite or a spec!
-    describe("disabled suite & tests area", function() {
+    xdescribe("disabled suite & tests area", function() {
         xdescribe("nested disabled spec", function() {
            it("I won't run", function() {
                expect("hello").toBeTruthy();

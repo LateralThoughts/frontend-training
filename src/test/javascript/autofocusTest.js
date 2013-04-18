@@ -4,7 +4,8 @@ define(["jquery", "modules/autofocus"], function($, autofocus) {
         beforeEach(function() {
             this.addMatchers({
                 toHaveFocus: function() {
-                    return $(this.actual).is(":focus");
+                    // do not use :focus - https://code.google.com/p/phantomjs/issues/detail?id=427
+                    return $(this.actual).get(0) == document.activeElement;
                 }
             });
             $form = affix('form[id=testForm]');

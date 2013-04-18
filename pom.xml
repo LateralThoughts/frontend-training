@@ -15,7 +15,7 @@
     </properties>
 
     <build>
-        <defaultGoal>jasmine:test</defaultGoal>
+        <defaultGoal>jslint:jslint jasmine:test</defaultGoal>
         <plugins>
             <!-- JS -->
             <plugin>
@@ -35,6 +35,25 @@
                     <execution>
                         <goals>
                             <goal>test</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jslint-maven-plugin</artifactId>
+                <version>1.0.1</version>
+                <configuration>
+                    <assumeABrowser>true</assumeABrowser>
+                    <sourceJsFolder>${jsSrc}</sourceJsFolder>
+                    <!-- TODO EX2: add missing configuration -->
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>jslint</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>jslint</goal>
                         </goals>
                     </execution>
                 </executions>

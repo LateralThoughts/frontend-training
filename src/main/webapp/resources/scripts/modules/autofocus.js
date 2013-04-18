@@ -1,4 +1,4 @@
-define(['jquery'], function($) {
+define(["jquery", "vendor/underscore"], function($, _) {
 
     var filterVisibleInputs = function(ancestor) {
         return $(ancestor   + " :input").filter(":visible");
@@ -11,7 +11,12 @@ define(['jquery'], function($) {
          * @param startExpression optional start element (default: body)
          */
         focus : function(startExpression) {
-            var $startElement = (startExpression === undefined) ? "body" : startExpression;
+            var $startElement = (startExpression === undefined) ? "body" : startExpression,
+                matchingInput = _.head(filterVisibleInputs($startElement));
+
+            if (matchingInput !== undefined) {
+                $(matchingInput).focus();
+            }
         }
     };
 });

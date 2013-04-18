@@ -30,7 +30,7 @@ Note this app embeds in-memory H2 database. Data will be erased at each new star
 The goal here is to cover the main functionalities of Jasmine testing framework.
 This goes from very basic tests to custom matchers, spies and stubs.
 
-Complete the exercises in ascending order, contained in `src/test/javascript/_jasmine_introduction`.
+Complete the exercises in ascending order, contained in `src/test/javascript/`.
 An example of fixtures (not part of Jasmine core) is given through the two next exercises.
 
 _tips_

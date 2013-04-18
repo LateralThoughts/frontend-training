@@ -6,9 +6,10 @@
     <c:import url="/WEB-INF/views/fragments/commonStyle.jsp" />
     <c:import url="/WEB-INF/views/fragments/commonScript.jsp" />
     <script type="text/javascript">
-        require(['jquery', 'modules/autofocus'], function($, autofocus) {
+        require(['jquery', 'modules/autofocus', 'modules/pages/activities'], function($, autofocus, activities) {
             $(document).ready(function() {
                 autofocus.focus('#activitiesForm');
+                activities.observeEmployees('#employees', '#clients');
             });
         });
     </script>

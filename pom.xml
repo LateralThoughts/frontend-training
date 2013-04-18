@@ -1,0 +1,45 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.github.lateralthoughts</groupId>
+    <artifactId>zupr-trackr</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+
+    <name>frontend-training</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <jsSrc>${project.basedir}/src/main/webapp/resources/scripts</jsSrc>
+    </properties>
+
+    <build>
+        <defaultGoal>jasmine:test</defaultGoal>
+        <plugins>
+            <!-- JS -->
+            <plugin>
+                <groupId>com.github.searls</groupId>
+                <artifactId>jasmine-maven-plugin</artifactId>
+                <version>1.3.1.0</version>
+                <configuration>
+                    <specRunnerTemplate>REQUIRE_JS</specRunnerTemplate>
+                    <jsSrcDir>${jsSrc}</jsSrcDir>
+                    <preloadSources>
+                        <source>vendor/require-jquery.js</source>
+                        <source>include/jasmine-fixture.js</source>
+                        <source>main.js</source>
+                    </preloadSources>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

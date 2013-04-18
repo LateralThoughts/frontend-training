@@ -1,20 +1,3 @@
-# Pitch
-
-Zupr-Trackr is a Spring Data/JPA toy project.
-It allows employee contracting tracking.
-
-Moreover, the application exposes a REST API through Spring Data/REST repository discovery mechanism (see http://localhost:8080/api).
-
-## Getting started 
-
-Just run...
-
-`mvn`
-
-... to compile, run unit (Java && JS) tests and start an embedded Tomcat server.
-Note this app embeds in-memory H2 database. Data will be erased at each new start (if you run `clean` goal).
-
-
 ## Exercises
 
 ### PART I: INDUSTRIALIZATION
@@ -24,6 +7,21 @@ All you have to do is write enough code to make the unit tests pass.
 
 Read the exercises carefully and do not hesitate to check the tips.
 
+#### Pitch
+
+Zupr-Trackr is a Spring Data/JPA toy project.
+It allows employee contracting tracking.
+
+Moreover, the application exposes a REST API through Spring Data/REST repository discovery mechanism (see http://localhost:8080/api).
+
+#### Getting started
+
+Just run...
+
+`mvn`
+
+... to compile, run unit (Java && JS) tests and start an embedded Tomcat server.
+Note this app embeds in-memory H2 database. Data will be erased at each new start (if you run `clean` goal).
 
 #### Exercise 1 - the crescendo suite (45 minutes)
 

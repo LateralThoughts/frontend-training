@@ -35,7 +35,7 @@ An example of fixtures (not part of Jasmine core) is given through the two next 
 
 _tips_
 
- 1. run 'mvn jasmine:test'
+ 1. run 'mvn'
  1. feel free to consult the online documentation: http://pivotal.github.io/jasmine/
 
 

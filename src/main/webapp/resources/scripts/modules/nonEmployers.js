@@ -1,4 +1,4 @@
-define([/*TODO:dependent modules*/], function(/*TODO:exported vars*/) {
+define(["jquery"], function($) {
 
     return {
         /**
@@ -8,7 +8,8 @@ define([/*TODO:dependent modules*/], function(/*TODO:exported vars*/) {
          * @return matching companies
          */
         fetchCompanies: function(employeeId, successCallback) {
-            //TODO
+            var url = '/employees/' + employeeId + '/nonEmployers';
+            return $.getJSON(url, successCallback);
         }
     };
 });

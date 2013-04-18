@@ -46,6 +46,13 @@ _tips_
 
 Let us discover how JSLint works and can be configured in several ways to adapt its checking and convention rules.
 
+_tips_
+
+ 1. run `mvn`
+ 1. global conf: `<excludes><exclude>path/</exclude><exclude>path\</exclude></excludes>` and `<predefinedVars>a,b,c</predefinedVars>` are your friends
+ 1. on a file-basis conf, in header:
+`/*global globalVar1:true,
+globalVar2:true*/`
 
 #### Exercise 3 - autofocus module (15 minutes)
 

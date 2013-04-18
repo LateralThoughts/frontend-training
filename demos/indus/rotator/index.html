@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta encoding="UTF-8" />
+		<title>Simple RequireJS demo</title>
+		<script type="text/javascript"
+			src="scripts/lib/require-jquery.js"
+			data-main="scripts/main"></script>
+		<script type="text/javascript">
+			require(['jquery', 'modules/rotator'], function($, rotator) {
+				$(document).ready(function() {
+					$('#degrees').on("input", function() {
+						rotator.rotate('#rotator', $(this).val());
+					});
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<h1>Rotator demo</h1>
+
+		<input type="number" id="degrees" value="9" />
+
+		<p id="rotator">
+			HELLO WORLD
+		</p>
+	</body>
+</html>

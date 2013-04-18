@@ -1,13 +1,18 @@
 define([
     'jquery',
+    'vendor/underscore',
     'modules/nonEmployers',
-    'text!tpl/employeeOption.tpl'/*,
-    add your own if needed ;) */], function($, nonEmployers, employeeTemplate /* add yours */) {
+    'text!tpl/employeeOption.tpl'], function($, _, nonEmployers, employeeTemplate) {
 
     var updateCompanies = function(selectedEmployeeId, companyDropDownSelector) {
         nonEmployers.fetchCompanies(selectedEmployeeId, function(data) {
-            var newContents = '';
-            //TODO
+            var template = _.template(employeeTemplate),
+                newContents = _.reduce(data, function(string,element) {
+                    return string + template({
+                        value: element.id,
+                        display: element.name
+                    });
+                }, "<option value='-1'>select a client...</option>\n");
             $(companyDropDownSelector).html(newContents);
         });
     };
@@ -20,8 +25,8 @@ define([
          * @param companyDropDownSelector selector of the company dropdown
          */
         observeEmployees: function(employeeDropDownSelector, companyDropDownSelector) {
-            $(employeeDropDownSelector).on("change", function() {
-                var selectedEmployeeId;//TODO
+            $(employeeDropDownSelector).change(function() {
+                var selectedEmployeeId = $(employeeDropDownSelector + " option:selected").val();
                 if (selectedEmployeeId > 0) {
                     updateCompanies(selectedEmployeeId, companyDropDownSelector);
                 }

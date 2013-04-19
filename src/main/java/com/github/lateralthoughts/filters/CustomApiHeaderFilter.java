@@ -15,8 +15,10 @@ public class CustomApiHeaderFilter extends GenericFilterBean {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        ((HttpServletResponse) response).addHeader("Access-Control-Allow-Origin", "*");
-        chain.doFilter(request, response);
+        HttpServletResponse servletResponse = (HttpServletResponse) response;
+	servletResponse.addHeader("Access-Control-Allow-Origin", "*");
+        servletResponse.addHeader("Access-Control-Allow-Headers", "Content-Type");
+	chain.doFilter(request, response);
     }
 
 }

@@ -1,0 +1,3 @@
+[submodule "backbone"]
+	path = backbone
+	url = git://github.com/JunkieLand/formation_backbone_initiation.git

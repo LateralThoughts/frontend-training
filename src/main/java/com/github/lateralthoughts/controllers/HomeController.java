@@ -10,6 +10,7 @@ import com.google.common.base.Functions;
 import com.google.common.collect.FluentIterable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.inject.Inject;
@@ -35,7 +36,10 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/", method = GET)
-    public ModelAndView showReports() {
+    public ModelAndView showReports(@RequestParam(value = "framework", defaultValue = "require") String framework) {
+        if (firstNonNull(framework, "").equalsIgnoreCase("angular")) {
+            return new ModelAndView("home/angular");
+        }
         ModelAndView view = new ModelAndView("home/index");
         Iterable<Activity> activities = activitiesRepository.findAll(sortByAscClientAndEmployee());
         view.addObject("activitiesByClientAndEmployee", activities_by_Employer_Employee_Client(activities));

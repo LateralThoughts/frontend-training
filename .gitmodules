@@ -1,3 +1,6 @@
 [submodule "backbone"]
 	path = backbone
 	url = git://github.com/JunkieLand/formation_backbone_initiation.git
+[submodule "angular-start"]
+	path = angular-start
+	url = git@github.com:fbiville/angular-start.git

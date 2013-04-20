@@ -18,9 +18,17 @@
                         </blockquote>
                     </div>
                     <div>
-                        <!--<ul data-ng-repeat="element in elements">
-                            TODO: iterate over nested properties of element
-                        </ul>-->
+                        <div data-ng-cloak>
+                            <ul data-ng-repeat="element in elements">
+                                <li>{{element.employee.firstName}} {{element.employee.lastName}},
+                                    employed by {{element.employee.employer.name}}
+                                    <ul>
+                                        <li>{{element.rate|currency:"EUR"}}</li>
+                                        <li>{{element.day}}</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>

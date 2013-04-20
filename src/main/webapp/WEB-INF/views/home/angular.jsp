@@ -18,13 +18,35 @@
                         </blockquote>
                     </div>
                     <div>
+
+                        <form class="form-horizontal well">
+                            <div class="control-group">
+                                <label class="control-label">Filter on any property... </label>
+                                <div class="controls">
+                                    <!-- TODO: add data-ng-model="query" here -->
+                                    <input class="input-medium search-query" />
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">...then filter on first name</label>
+                                <div class="controls">
+                                    <!-- TODO: add data-ng-model="query2" here -->
+                                    <input class="input-medium search-query" />
+                                </div>
+                            </div>
+                        </form>
+
                         <div data-ng-cloak>
+                            <!-- TODO:
+                                1. chain (aka |) elements to `filter` with `query` as argument
+                                2. do the same with your custom filter `filterFirstName` with `query2`
+                            -->
                             <ul data-ng-repeat="element in elements">
                                 <li>{{element.employee.firstName}} {{element.employee.lastName}},
                                     employed by {{element.employee.employer.name}}
                                     <ul>
                                         <li>{{element.rate|currency:"EUR"}}</li>
-                                        <li>{{element.day}}</li>
+                                        <li>{{element.day}}, {{element.client.name}}</li>
                                     </ul>
                                 </li>
                             </ul>
@@ -33,6 +55,7 @@
                 </div>
             </div>
         </div>
+
         <script type="text/javascript">
             require(['jquery', 'modules/angularjs/angularHelper'], function($, helper) {
                 $(document).ready(function() {

@@ -23,25 +23,19 @@
                             <div class="control-group">
                                 <label class="control-label">Filter on any property... </label>
                                 <div class="controls">
-                                    <!-- TODO: add data-ng-model="query" here -->
-                                    <input class="input-medium search-query" />
+                                    <input class="input-medium search-query" data-ng-model="query" />
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label">...then filter on first name</label>
                                 <div class="controls">
-                                    <!-- TODO: add data-ng-model="query2" here -->
-                                    <input class="input-medium search-query" />
+                                    <input class="input-medium search-query" data-ng-model="query2" />
                                 </div>
                             </div>
                         </form>
 
                         <div data-ng-cloak>
-                            <!-- TODO:
-                                1. chain (aka |) elements to `filter` with `query` as argument
-                                2. do the same with your custom filter `filterFirstName` with `query2`
-                            -->
-                            <ul data-ng-repeat="element in elements">
+                            <ul data-ng-repeat="element in elements|filter:query|filterFirstName:query2">
                                 <li>{{element.employee.firstName}} {{element.employee.lastName}},
                                     employed by {{element.employee.employer.name}}
                                     <ul>

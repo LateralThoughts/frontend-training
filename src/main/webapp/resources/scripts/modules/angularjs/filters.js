@@ -11,14 +11,9 @@ define(['modules/angularjs/app', 'vendor/underscore'], function (app, _) {
             }
 
             return _.filter(items, function(item) {
-                /*
-                 * TODO: return predicate based on employee first name
-                 * equality to the passed value
-                 *  - items is the collection being filtered
-                 *  - item is the current iteration element
-                 *  - value is the actual argument (e.g. "florent")
-                 */
-                return true;
+                return  !_.isUndefined(item.employee) &&
+                    !_.isUndefined(item.employee.firstName) &&
+                    item.employee.firstName.toLocaleLowerCase().indexOf(value.toLocaleLowerCase()) >= 0;
             });
         };
     });

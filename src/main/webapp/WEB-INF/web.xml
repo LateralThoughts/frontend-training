@@ -13,7 +13,7 @@
         <filter-name>EtagFilter</filter-name>
         <url-pattern>/resources/scripts/*</url-pattern>
         <url-pattern>/resources/styles/*</url-pattern>
-        <url-pattern>/resources/images/*</url-pattern>
+        <url-pattern>/resources/img/*</url-pattern>
     </filter-mapping>
 
     <!-- Ensure UTF-8 encoded pages so that certain characters are displayed and submitted correctly -->

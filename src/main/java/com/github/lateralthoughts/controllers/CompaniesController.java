@@ -1,5 +1,6 @@
 package com.github.lateralthoughts.controllers;
 
+import com.github.lateralthoughts.domain.Activity;
 import com.github.lateralthoughts.domain.Company;
 import com.github.lateralthoughts.exceptions.ResourceNotFoundException;
 import com.github.lateralthoughts.repositories.CompaniesRepository;
@@ -7,10 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.inject.Inject;
@@ -67,5 +65,20 @@ public class CompaniesController {
         }
         repository.delete(id);
         return new ModelAndView("redirect:/companies");
+    }
+
+    @RequestMapping(value = {"/", ""}, method = GET, headers = {"Accept=application/json"})
+    @ResponseBody
+    public Iterable<Company> all() {
+        return repository.findAll();
+    }
+
+    @RequestMapping(value = "/{id}", method = GET, headers = {"Accept=application/json"})
+    @ResponseBody
+    public Company one(@PathVariable("id") long id) {
+        if (!repository.exists(id)) {
+            throw new ResourceNotFoundException("Employee not found");
+        }
+        return repository.findOne(id);
     }
 }

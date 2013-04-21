@@ -92,6 +92,21 @@ public class EmployeesController {
         return employeesRepository.findNonEmployersByEmployeeId(id);
     }
 
+    @RequestMapping(value = {"/", ""}, method = GET, headers = {"Accept=application/json"})
+    @ResponseBody
+    public Iterable<Employee> all() {
+        return employeesRepository.findAll();
+    }
+
+    @RequestMapping(value = "/{id}", method = GET, headers = {"Accept=application/json"})
+    @ResponseBody
+    public Employee one(@PathVariable("id") long id) {
+        if (!employeesRepository.exists(id)) {
+            throw new ResourceNotFoundException("Employee not found");
+        }
+        return employeesRepository.findOne(id);
+    }
+
     @InitBinder("employee.employer")
     protected void customizeConversions(final WebDataBinder binder) {
         ((GenericConversionService) binder.getConversionService()).addConverter(entityConverter);

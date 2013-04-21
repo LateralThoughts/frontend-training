@@ -11,16 +11,14 @@ import org.springframework.data.repository.support.DomainClassConverter;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.inject.Inject;
 import javax.validation.Valid;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Collection;
 import java.util.Date;
 
 import static com.github.lateralthoughts.collections.sort.CompanySort.sortByAscName;
@@ -73,10 +71,25 @@ public class ActivitiesController {
     @RequestMapping(value = "/{id}/delete", method = GET)
     public ModelAndView delete(@PathVariable("id") long id) {
         if (!activitiesRepository.exists(id)) {
-            throw new ResourceNotFoundException("Employee not found");
+            throw new ResourceNotFoundException("Activity not found");
         }
         activitiesRepository.delete(id);
         return new ModelAndView("redirect:/");
+    }
+
+    @RequestMapping(value = {"/", ""}, method = GET, headers = {"Accept=application/json"})
+    @ResponseBody
+    public Iterable<Activity> all() {
+        return activitiesRepository.findAll();
+    }
+
+    @RequestMapping(value = "/{id}", method = GET, headers = {"Accept=application/json"})
+    @ResponseBody
+    public Activity one(@PathVariable("id") long id) {
+        if (!activitiesRepository.exists(id)) {
+            throw new ResourceNotFoundException("Activity not found");
+        }
+        return activitiesRepository.findOne(id);
     }
 
     @InitBinder

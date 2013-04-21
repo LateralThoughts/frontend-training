@@ -1,0 +1,16 @@
+<div data-ng-controller="ZuprTrackrEmployees">
+    <form class="form-horizontal well">
+        <div class="control-group">
+            <label class="control-label">Filter on any property... </label>
+            <div class="controls">
+                <input class="input-medium search-query" data-ng-model="query" />
+            </div>
+        </div>
+    </form>
+
+    <div data-ng-cloak>
+        <ul data-ng-repeat="element in elements|filter:query">
+            <li>{{element.firstName}} {{element.lastName}} - <em>{{element.employer.name}}</em></li>
+        </ul>
+    </div>
+</div>

@@ -1,5 +1,6 @@
 
 define(['angular',
+    'angular-resource',
     'modules/angularjs/app',
     'modules/angularjs/services',
     'modules/angularjs/controllers',

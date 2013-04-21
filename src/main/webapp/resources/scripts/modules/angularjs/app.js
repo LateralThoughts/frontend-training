@@ -9,11 +9,14 @@ define(['angular'], function (angular) {
                 templateUrl: '/resources/scripts/templates/angular-partials/activities.html',
                 controller: 'ZuprTrackrActivities'
             })
-            /*
-             * TODO - add routes for :
-             * /companies -> controller: ZuprTrackrCompanies ('companies.html', same path as above)
-             * /employees -> controller: ZuprTrackrEmployees ('employees.html', same path as above)
-             */
+            .when('/companies', {
+                templateUrl: '/resources/scripts/templates/angular-partials/companies.html',
+                controller: 'ZuprTrackrCompanies'
+            })
+            .when('/employees', {
+                templateUrl: '/resources/scripts/templates/angular-partials/employees.html',
+                controller: 'ZuprTrackrEmployees'
+            })
             .otherwise({
                 redirectTo: '/activities'
             });

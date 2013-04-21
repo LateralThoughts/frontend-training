@@ -46,7 +46,11 @@
                 <configuration>
                     <assumeABrowser>true</assumeABrowser>
                     <sourceJsFolder>${jsSrc}</sourceJsFolder>
-                    <!-- TODO EX2: add missing configuration -->
+                    <excludes>
+                        <exclude>vendor/</exclude>
+                        <exclude>vendor\</exclude>
+                    </excludes>
+                    <predefinedVars>require,define</predefinedVars>
                 </configuration>
                 <executions>
                     <execution>

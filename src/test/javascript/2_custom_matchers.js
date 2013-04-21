@@ -11,12 +11,13 @@ describe("custom matchers - ", function() {
                 // please complete ;)
                 // the actual value is: this.actual
                 // the expected one is: expected
-                return false;
+                return this.actual.length >= 2
+                    && this.actual[1] === expected;
             },
             toNeverMatch: function() {
                 // here the goal is to display
                 // ... a custom error message
-                // this.message = function() { return "TODO"; }
+                this.message = function() { return "I will never match at all !!!"; }
                 return false;
             }
         });
@@ -31,7 +32,7 @@ describe("custom matchers - ", function() {
 
     //nothing to do here, make the test run and output toNeverMatch matcher error msg
     //then just disable the test (see below to know how)
-    it("will ALWAYS output your error message ;)", function() {
+    xit("will ALWAYS output your error message ;)", function() {
         expect(undefined).toNeverMatch();
     });
 

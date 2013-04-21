@@ -10,12 +10,17 @@ describe("spies", function() {
             yetAnotherMethod: function() {
             }
         }
-        //TODO: uncomment and adapt the following lines to make the tests pass
-        //spyOn(myObj, "myFunc");
-        //spyOn(myObj, "myFunc").andCallThrough();
-        //TODO
-        //actually do some calls
 
+        spyOn(object, "method").andReturn(42);
+        spyOn(object, "otherMethod").andCallThrough();
+        spyOn(object, "yetAnotherMethod").andCallFake(function() {
+            window.s95 = false;
+            return 42;
+        });
+
+        object.method(42);
+        object.method(42, 4224);
+        object.otherMethod();
     });
 
     describe("basic spies", function() {
@@ -42,6 +47,7 @@ describe("spies", function() {
         it("should spy and get the fake result", function() {
             // WARNING: it is forbidden here to modify
             // ... object.method implementation
+
             expect(object.method).toHaveBeenCalled();
             expect(object.method()).toBe(42);
         });

@@ -4,3 +4,6 @@
 [submodule "angular-start"]
 	path = angular-start
 	url = git@github.com:fbiville/angular-start.git
+[submodule "frontend-graph-libs-training"]
+	path = frontend-graph-libs-training
+	url = git@github.com:LateralThoughts/frontend-graph-libs-training.git
